@@ -30,6 +30,9 @@ def test():
 def save_gazouille():
 	if request.method == 'POST':
 		print(request.form)
+		details = request.form
+        userName = details['user-name']
+        message = details['user-text']
 		dump_to_csv(request.form)
 		return redirect(url_for('timeline'))
 		#return "OK"
