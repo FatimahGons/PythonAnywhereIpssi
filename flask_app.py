@@ -7,6 +7,10 @@ app = Flask(__name__)
 def home():
     return 'Bienvenue !'
 
+@app.route('/test')
+def test():
+	return 'Test Fatimah !'
+
 @app.route('/gaz', methods=['GET','POST'])
 def save_gazouille():
 	if request.method == 'POST':
