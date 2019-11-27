@@ -15,17 +15,6 @@ mysql = MySQL(app)
 def home():
     return 'Bienvenue !'
 
-@app.route('/test', methods=['GET', 'POST'])
-def test():
-    if request.method == "POST":
-        details = request.form
-        userName = details['user-name']
-        message = details['user-text']
-		print(userName)
-		print(message)
-        return 'success'
-    return render_template('timeline.html')
-
 @app.route('/gaz', methods=['GET','POST'])
 def save_gazouille():
 	if request.method == 'POST':
