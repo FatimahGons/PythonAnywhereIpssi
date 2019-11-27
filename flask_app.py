@@ -4,10 +4,10 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'MyDB'
+app.config['MYSQL_HOST'] = 'FatimahGs.mysql.eu.pythonanywhere-services.com'
+app.config['MYSQL_USER'] = 'FatimahGs'
+app.config['MYSQL_PASSWORD'] = 'loicfaty'
+app.config['MYSQL_DB'] = 'PythonTwitter'
 
 mysql = MySQL(app)
 
@@ -31,8 +31,12 @@ def save_gazouille():
 	if request.method == 'POST':
 		print(request.form)
 		details = request.form
-        userName = details['user-name']
+        username = details['user-name']
         message = details['user-text']
+		cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO MyTweet(username, message) VALUES (%s, %s)", (username, message))
+        mysql.connection.commit()
+        cur.close()
 		dump_to_csv(request.form)
 		return redirect(url_for('timeline'))
 		#return "OK"
