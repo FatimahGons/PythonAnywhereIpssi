@@ -20,7 +20,7 @@ def save_gazouille():
 	if request.method == 'POST':
 		print(request.form)
 		details = request.form
-        username = details['user-name]
+        username = details['user-name']
 		print("username")
 		print(username)
         message = details['user-text']
