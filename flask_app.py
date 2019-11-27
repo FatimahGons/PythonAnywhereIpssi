@@ -1,15 +1,30 @@
 from flask import Flask, request, render_template, redirect, url_for
 import csv
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
+
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_DB'] = 'MyDB'
+
+mysql = MySQL(app)
 
 @app.route('/')
 def home():
     return 'Bienvenue !'
 
-@app.route('/test')
+@app.route('/test', methods=['GET', 'POST'])
 def test():
-	return 'Test Fatimah !'
+    if request.method == "POST":
+        details = request.form
+        userName = details['user-name']
+        message = details['user-text']
+		print(userName)
+		print(message)
+        return 'success'
+    return render_template('timeline.html')
 
 @app.route('/gaz', methods=['GET','POST'])
 def save_gazouille():
