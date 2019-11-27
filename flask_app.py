@@ -20,14 +20,14 @@ def save_gazouille():
 	if request.method == 'POST':
 		print(request.form)
 		details = request.form
-        username = details['user-name']
+    	username = details['user-name']
 		print("username")
 		print(username)
-        message = details['user-text']
+    	message = details['user-text']
 		cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO MyTweet(username, message) VALUES (%s, %s)", (username, message))
-        mysql.connection.commit()
-        cur.close()
+    	cur.execute("INSERT INTO MyTweet(username, message) VALUES (%s, %s)", (username, message))
+    	mysql.connection.commit()
+    	cur.close()
 		dump_to_csv(request.form)
 		return redirect(url_for('timeline'))
 		#return "OK"
