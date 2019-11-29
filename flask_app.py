@@ -80,8 +80,7 @@ def home():
 @app.route('/login')
 def login():
     """Return an html template with login fields."""
-    if request.method == 'GET':
-        return render_template('login.html')
+    return render_template('login.html')
 
 @app.route('/signup')
 def signup():
@@ -136,7 +135,6 @@ def save_gazouille():
             return redirect(url_for('timeline'))
         else:
             return "Votre message est trop long ou contient le mot interdit"
-		#return "OK"
     if request.method == 'GET':
         return render_template('formulaire.html')
 
