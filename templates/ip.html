@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		.ip{
+			margin: 10px auto;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	{% for i in myIP %}
+	<div id="ip" class="ip">
+		<div>{{i.ip}}</div>
+	</div>
+	{% endfor %}
+</body>
+</html>

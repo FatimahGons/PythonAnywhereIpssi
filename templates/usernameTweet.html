@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		.usernameTweet{
+			margin: 10px auto;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+    <h1>Les tweets de {{userTweetName}}</h1>
+	{% for unTweet in tabUserTweet %}
+	<div id="usernameTweet" class="usernameTweet">
+	    <div>{{unTweet.message}}</div>
+	</div>
+	{% endfor %}
+</body>
+</html>
