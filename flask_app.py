@@ -2,6 +2,7 @@
 
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, String, Integer
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -24,15 +25,15 @@ DB_DATABASE.create_all()
 class MyTweet(DB_DATABASE.Model):
     """Adding a new table MyTweet to the database."""
     __tablename__ = 'MyTweet'
-    id = DB_DATABASE.Column(DB_DATABASE.Integer, primary_key=True)
-    fistname = DB_DATABASE.Column(DB_DATABASE.String(20))
-    message = DB_DATABASE.Column(DB_DATABASE.String(280))
+    id = Column(Integer, primary_key=True)
+    fistname = Column(String(20))
+    message = Column(String(280))
 
 class MyAddressIP(DB_DATABASE.Model):
     """Adding a new table MyAddressIP to the database."""
     __tablename__ = 'MyAddressIP'
-    id = DB_DATABASE.Column(DB_DATABASE.Integer, primary_key=True)
-    ip = DB_DATABASE.Column(DB_DATABASE.String(20))
+    id = Column(Integer, primary_key=True)
+    ip = Column(String(20))
 
 @app.after_request
 def add_header(response):
